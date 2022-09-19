@@ -19,31 +19,58 @@ public class MemberMapperTests {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	@Test
+	/*@Test
 	public void testGetMemberList() {
 		log.info("----------------");
 		log.info(memberMapper.getMemberList());
-	}
+	}*/
 
 	
 	
 	
-
-	  /*@Test
+	/*//회원가입 테스트
+	 @Test
 	  public void testInsert() {
 		  MemberVO vo = new MemberVO();
-		  vo.setUserid("may123");
+		  vo.setUserid("may12345");
 		  vo.setUsername("윤미혜"); 
 		  vo.setUserpw("1234");
 		  vo.setEmail("cloud123@naver.com");
+		  vo.setBirth("1995-12-30");
 		  vo.setGender("남");
 	  
 	  memberMapper.insertMember(vo); }*/
-			 
-	 
+		
+	//아이디 중복 체크
+	/* @Test
+	 public void memberIdChk() {
+		 String id = "sky123";
+		 String id2 = "test123";
+		 memberMapper.idCheck(id);
+		 memberMapper.idCheck(id2);
+	 }*/
+	
+	//로그인 쿼리 mapper 메서드 테스트
+	@Test
+	public void memberLogin() {
+		MemberVO member = new MemberVO();
+		
+		//올바른 아이디 비번 입력 경우
+		member.setUserid("sky123");
+		member.setUserpw("1234");
+		
+		//옳지 않은 경우
+		/*member.setUserid("sky123456");
+		member.setUserpw("1234aaaa");*/
+		
+		memberMapper.memberLogin(member);
+		System.out.println("결과값 : " + memberMapper.memberLogin(member));
+		
+	}
+	
 	 
 	
-	@Test
+	/*@Test
 	public void testRead() {
 		MemberVO vo = memberMapper.read("sky123");
 		log.info(vo);
@@ -51,7 +78,7 @@ public class MemberMapperTests {
 	
 	
 	  @Test public void testDelete() { MemberVO vo = new MemberVO();
-	  vo.setUserid("may123");
+	  vo.setUserid("may");
 	  
 	  memberMapper.deleteMember(vo);
 	  
@@ -61,11 +88,11 @@ public class MemberMapperTests {
 	  public void testUpdate() {
 		  MemberVO vo = new MemberVO();
 			 vo.setUserid("sky123");
-			 vo.setUsername("홍성훈");
+			 vo.setUsername("김성훈");
 			 vo.setUserpw("1234");
 			 vo.setEmail("cloud123@naver.com");
 			 vo.setGender("남");
 			  
 			 memberMapper.updateMember(vo); 
-	  }  
+	  }  */
 }
